@@ -13,9 +13,12 @@ def index():
 @app.route('/create', methods = ['POST'])
 def ninja_added():
     data = {
-        "dojo_id" : request.form['dojos'],
+        "dojo_id" : request.form['dojo_id'],
         "first_name" : request.form['first_name'],
+        "last_name" : request.form['last_name'],
         "age" : request.form['age']
     }
-    Ninja.add_ninja(data)
+    print("Dojo id value:")
+    print(request.form["dojo_id"])
+    Ninja.create_ninja(data)
     return  redirect('/dojos')

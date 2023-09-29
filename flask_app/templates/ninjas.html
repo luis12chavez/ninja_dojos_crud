@@ -16,11 +16,11 @@
             <h1 style="text-align: center;">New Ninja</h1>
             <form action="/create" method="post">
                 <div class="form-group">
-                    <label for="dojos">Dojos:</label>
-                    <select class="custom-select">
+                    <!-- <label for="dojo_id">Dojos:</label> -->
+                    <select name="dojo_id" id="dojo_id" class="custom-select">
                         <option selected>Available Dojos</option>
-                            {% for dojo in dojos %}
-                        <option value="{{dojo.id}}" >{{dojo.name}} {{dojo.id}}</option>
+                        {% for dojo in dojos %}
+                            <option value="{{dojo.id}}">{{dojo.name}} {{dojo.id}}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -34,17 +34,18 @@
                 </div>
                 <div class="form-group">
                     <label for="age">Age:</label>
-                    <input type="text" class="form-control" name="age" id="email" placeholder="user@email.com">
+                    <input type="number" class="form-control" name="age" id="email" placeholder="13">
                 </div>
                 <input type="submit" value="Add Ninja" class="btn btn-outline-dark">
             </form>
             <div class="card">
                 Ninjas:
                 {% for ninja in ninjas %}
-                    <p>{{ninja.first_name}} Dojo: {{ninja.dojo_id}}</p>
+                <p>{{ninja.first_name}} Dojo: {{ninja.dojo_id}}</p>
                 {% endfor %}
             </div>
         </div>
+        <button><a href="/dojos">Home</a></button>
     </div>
 
 

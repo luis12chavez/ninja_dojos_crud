@@ -2,6 +2,7 @@ from flask_app.config.mysqlconnection import connectToMySQL
 
 # import ninja.py file
 from flask_app.models import ninja
+from flask import flash
 
 
 class Dojo:
@@ -11,6 +12,14 @@ class Dojo:
         self.created_at = data['created_at'] 
         self.updated_at = data['updated_at']
         self.student = None
+
+
+    # Staticmethod: Because this function does not give functionality to the class Burger
+    @staticmethod
+    def validate_dojo(dojo):
+        is_valid = True
+        if len(dojo['name']) < 0:
+            flash("Name must be at least greater than 0 characters.")
 
 
     
@@ -37,7 +46,7 @@ class Dojo:
     def dojo_all_info(cls):
         query = "SELECT * FROM dojos join ninjas on ninjas.dojo_id = dojos.id;" # each row now is of every ninja in every dojos table 
         results = connectToMySQL('dojos_and_ninjas_schema').query_db(query)
-        print(results)
+        # print(results)
 
         dojos = []
 
@@ -57,7 +66,7 @@ class Dojo:
         query = f"SELECT * FROM dojos join ninjas on ninjas.dojo_id = dojos.id WHERE ninjas.dojo_id = {dojo_id};"
         results = connectToMySQL('dojos_and_ninjas_schema').query_db(query)
         dojos = []
-        print(results)
+        # print(results)
 
         for row in results:
             dojo = cls(row)

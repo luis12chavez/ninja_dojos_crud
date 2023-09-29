@@ -11,16 +11,16 @@ class Ninja:
         self.age = data['age']
 
     @classmethod
-    def add_ninja(cls, data):
-        query = "Insert INTO ninjas (id, dojo_id, first_name, last_name, created_at, updated_at, age) Values( %(id)s, %(dojo_id)s, %(first_name)s, %(last_name)s , NOW(), NOW(), %(age)s )"
-        result = connectToMySQL('dojos_and_ninja_schema').query_db(query, data)
+    def create_ninja(cls, data):
+        query = "Insert INTO ninjas (dojo_id, first_name, last_name, created_at, updated_at, age) Values(%(dojo_id)s, %(first_name)s, %(last_name)s , NOW(), NOW(), %(age)s )"
+        result = connectToMySQL('dojos_and_ninjas_schema').query_db(query, data)
         return result 
 
     @classmethod
     def show_ninjas(cls):
         query = "Select * From ninjas;"
         results = connectToMySQL('dojos_and_ninjas_schema').query_db(query)
-        print(results)
+        # print(results)
         ninjas = []
         for ninja in results:
             ninjas.append(cls(ninja))
