@@ -1,5 +1,4 @@
 from flask_app.config.mysqlconnection import connectToMySQL
-from flask_app.models.dojo import Dojo
 
 class Ninja: 
     def __init__ (self, data):
@@ -10,7 +9,6 @@ class Ninja:
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
         self.age = data['age']
-        Dojo = None
 
     @classmethod
     def add_ninja(cls, data):

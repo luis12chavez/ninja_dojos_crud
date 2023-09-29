@@ -20,7 +20,7 @@
                     <select class="custom-select">
                         <option selected>Available Dojos</option>
                             {% for dojo in dojos %}
-                        <option value="{{dojo.id}}">{{dojo.name}}</option>
+                        <option value="{{dojo.id}}" >{{dojo.name}} {{dojo.id}}</option>
                         {% endfor %}
                     </select>
                 </div>
