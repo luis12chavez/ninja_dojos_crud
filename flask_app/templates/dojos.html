@@ -12,20 +12,29 @@
 
 <body>
     <div class="container">
-        <div class="card">
+        <div class="new_dojo_card">
             <h2>New Dojo</h2>
             <form action="/dojos/create" method="post">
+                {% with messages = get_flashed_messages() %}    <!-- declare a variable called messages -->
+                    {% if messages %}                           <!-- check if there are any messages -->
+                        {% for message in messages %}           <!-- loop through the messages -->
+                        <p>{{message}}</p>                      <!-- display each message in a paragraph tag -->
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
                 <label for="name">Name:</label>
-                <input type="text" name = "name" id="name">
-                <button type="submit">Create</button>
+                <input type="text" name="name" id="name">
+                <button class="btn3" type="submit">Create</button>
             </form>
             <p><a href="/ninjas">Add New Ninja</a></p>
         </div>
         <div class="card">
             <h2>All Dojos:</h2>
-            {% for dojo in dojos %}
-                <p><a href="/dojos/{{dojo.id}}">{{dojo.name}} Dojo ID: {{dojo.id}}</a></p>
-            {% endfor %}
+            <div class="card_dojos">
+                {% for dojo in dojos %}
+                    <p><a href="/dojos/{{dojo.id}}">{{dojo.name}}</a></p>
+                {% endfor %}
+            </div>
         </div>
     </div>
 

@@ -1,4 +1,5 @@
 from flask_app.config.mysqlconnection import connectToMySQL
+from flask import flash
 
 class Ninja: 
     def __init__ (self, data):
@@ -9,6 +10,18 @@ class Ninja:
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
         self.age = data['age']
+
+
+    @staticmethod
+    def validate_ninja(ninja):
+        is_valid = True
+        if len(ninja['first_name']) < 2:
+            flash("Name must be at least 3 characters.")
+            is_valid = False
+        if len(ninja['last_name']) < 2:
+            flash("Last name must be at least 3 characters.")
+            is_valid = False
+        return is_valid
 
     @classmethod
     def create_ninja(cls, data):

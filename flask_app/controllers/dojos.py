@@ -13,9 +13,13 @@ def show_dojos():
 
 @app.route('/dojos/create', methods = ['POST'])
 def add_dojo():
+    if not Dojo.validate_dojo(request.form):
+        return redirect('/dojos')
+    
     data = {
         "name" : request.form['name']
     }
+
     Dojo.create_dojo(data)
     return redirect('/dojos')
 

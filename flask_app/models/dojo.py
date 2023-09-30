@@ -18,8 +18,10 @@ class Dojo:
     @staticmethod
     def validate_dojo(dojo):
         is_valid = True
-        if len(dojo['name']) < 0:
-            flash("Name must be at least greater than 0 characters.")
+        if len(dojo['name']) < 3:
+            flash("Name must be at least 3 characters.")
+            is_valid = False
+        return is_valid
 
 
     

@@ -15,6 +15,13 @@
         <div class="card">
             <h1 style="text-align: center;">New Ninja</h1>
             <form action="/create" method="post">
+                {% with messages = get_flashed_messages() %}    <!-- declare a variable called messages -->
+                    {% if messages %}                           <!-- check if there are any messages -->
+                        {% for message in messages %}           <!-- loop through the messages -->
+                        <p>{{message}}</p>                      <!-- display each message in a paragraph tag -->
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
                 <div class="form-group">
                     <!-- <label for="dojo_id">Dojos:</label> -->
                     <select name="dojo_id" id="dojo_id" class="custom-select">
@@ -34,18 +41,18 @@
                 </div>
                 <div class="form-group">
                     <label for="age">Age:</label>
-                    <input type="number" class="form-control" name="age" id="email" placeholder="13">
+                    <input type="number" class="form-control" name="age" id="age">
                 </div>
-                <input type="submit" value="Add Ninja" class="btn btn-outline-dark">
+                <input type="submit" value="Add Ninja" class="btn btn-outline-dark m-2">
             </form>
-            <div class="card">
+            <button class="btn2"><a href="/dojos">Home</a></button>
+            <!-- <div class="card">
                 Ninjas:
                 {% for ninja in ninjas %}
                 <p>{{ninja.first_name}} Dojo: {{ninja.dojo_id}}</p>
                 {% endfor %}
-            </div>
+            </div> -->
         </div>
-        <button><a href="/dojos">Home</a></button>
     </div>
 
 

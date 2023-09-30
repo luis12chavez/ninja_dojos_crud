@@ -14,23 +14,47 @@ body {
     display: flex;
     justify-content: center;
     margin: 0 auto;
-    border: 2px dotted white;
+    /* border: 2px dotted white; */
     text-align: center;
     align-items: center;
     padding:10px;
 }
 
+
+/* card styles */
 .card {
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 50%;
     padding: 5px;
     margin:10px;
-    background-color: gainsboro;
+    color:white;
+    background-color: rgb(82, 74, 195);
+    border-radius: 2px;
+    box-shadow: 4px 6px black;
+}
+.new_dojo_card {
+    display: inline-block;
+    width: 50%;
+    padding: 5px;
+    margin:10px;
+    color:white;
+    background-color: rgb(82, 74, 195);
     border-radius: 2px;
     box-shadow: 4px 6px black;
 }
 
+.card_dojos
+{
+    display: inline-block;
+    width: 50%;
+    border:4px solid white;
+}
+/* card styles */
+
+
+/* Button styles */
 .btn
 {
     border: 2px rgb(182, 162, 8) solid ;
@@ -42,6 +66,37 @@ body {
     align-self: center;
 }
 
+.btn2
+{
+    border: 2px rgb(182, 162, 8) solid ;
+    background-color: white;
+    font-size: 14px;
+    border-radius: 12px;
+    color: rgb(33, 147, 151);
+    width: 30%;
+    margin-top: 5px;
+    align-self: center;
+}
+
+.btn3
+{
+    border: 2px rgb(182, 162, 8) solid ;
+    background-color: white;
+    font-size: 14px;
+    border-radius: 5px;
+    color: black;
+    width: 10%;
+    
+}
+/* Button styles */
+
 .row {
     display: flex;
+}
+
+a{
+    color: black;
+    /* font-size: large; */
+    font-size: 20px;
+    text-decoration:none;
 }
